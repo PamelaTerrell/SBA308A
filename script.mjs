@@ -1,14 +1,22 @@
-fetch("https://evilinsult.com/generate_insult.php?lang=en&type=json")
-.then(response => {
+fetchData();
 
-    if(!response.ok){
-        throw new Error("could not fetch");
+async function fetchData(){
+
+    try{
+        const response = await fetch("https://evilinsult.com/generate_insult.php?lang=en&type=json");
+
+        if(!response.ok){
+            throw new Error("could not fetch");
+        }
+
+        const data = await response.json();
+        console.log(data);
+
+
     }
 
-    return response.json();
+    catch(error){
+        console.error(error);
+    }
 
 }
-)
-
-.then(data => console.log(data))
-.catch(error => console.error(error));
