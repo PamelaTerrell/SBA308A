@@ -3,8 +3,9 @@ const proxyUrl = "https://cors-anywhere.herokuapp.com/"; const targetUrl =
   "https://evilinsult.com/generate_insult.php?lang=en&type=json";
 document.addEventListener("DOMContentLoaded", () => { fetchInsults();
 });
-async function fetchInsults() { try {
-const response = await fetch(proxyUrl + targetUrl,
+async function fetchInsults() { 
+    try {
+        const response = await fetch(proxyUrl + targetUrl,
 { cache: "no-store" }); // this part allows you to get a different insult with each clic
 const insultData = await response.json();
     renderInsult(insultData);
